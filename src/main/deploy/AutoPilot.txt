@@ -1,0 +1,457 @@
+// AutoPilot.txt - move sequences for auto mode
+
+// enable tracing for to print debug information, comment out before competitions
+
+enableTracing( ON )
+listMethods()
+enableTracing( OFF )
+
+// AutoPilot Methods:
+//
+// AddSequence ( "sequenceName" ) : adds an existing sequence to the current one
+// EnableTracing ( ) : turn on tracing
+// JogMove ( moveLength, jogLength, Go|Stop ) : moves with a side offset
+// ListMethods ( ) : lists all of the available methods
+// Move ( deltaPos, Go|Stop ) : straight move, negative deltaPos moves backwards
+// MoveEndVel ( deltaPos, endVel ) : straight move ending at new CruiseVel
+// MovePause ( pauseSeconds ) : pause while stopped
+// NewSequence ( "sequenceName" ) : start a new named sequence
+// OverlapNextAction ( deltaSeconds ) : overlap next action with movement, can be negative to overlap with last move
+// SetAccel ( accel ) : sets maximum movement acceleration
+// SetCruiseVel ( vel ) : sets movement cruise velocity
+// SetMinTurnVel ( vel ) : sets minimum inside turn velocity
+// SetTankWidth ( tankWidth ) : sets the width of the tank drive
+// SetTurnRadius ( radius ) : sets turn radius
+// Stop ( ) : end processing of the file
+// Turn ( degrees, Forward|Backward, Go|Stop ) : turns along a radius
+
+//
+// AutoPilotRobot Methods:
+//   StartCommand ( name ) : starts named command
+//
+// Vaild commands for 'StartCommand' are:
+// IntakeArmDown IntakeArmUp BallPickup
+
+SetTankWidth(30)
+
+	// fast movement
+//	SetAccel(150)
+//	SetCruiseVel(100)
+// slow
+	SetAccel(50)
+	SetCruiseVel(15)
+
+NewSequence("Fwd")
+	Move(60, Stop)
+
+NewSequence("Back")
+	Move(-60, Stop)
+
+NewSequence("Align")
+	Move(12, Stop)
+	Move(-12, Stop)
+
+enableTracing( off )
+
+NewSequence("Left")
+	Spin( -360 )
+
+NewSequence("Right")
+	Spin( 360 )
+
+NewSequence("Arcs")
+	SetAccel(100)
+	SetCruiseVel(50)
+
+	// arcs at 60" radius (both wheels forward)
+	SetTurnRadius(60)
+
+	Turn(90, Forward, Stop)
+	MovePause( 1.0 )
+
+	Turn(180, Backward, Stop)
+	MovePause( 1.0 )
+
+	Turn(90, Forward, Stop)
+	MovePause( 1.0 )
+
+	// arcs at 15" radius (right wheel stopped)
+
+	SetTurnRadius(15)
+
+	Turn(-90, Forward, Stop)
+	MovePause( 1.0 )
+
+	Turn(-180, Backward, Stop)
+	MovePause( 1.0 )
+
+	Turn(-90, Forward, Stop)
+	MovePause( 1.0 )
+
+	// arcs at 15" radius (right wheel backwards)
+	SetTurnRadius(10)
+
+	Turn(90, Forward, Stop)
+	MovePause( 1.0 )
+
+	Turn(180, Backward, Stop)
+	MovePause( 1.0 )
+
+	Turn(90, Forward, Stop)
+	MovePause( 1.0 )
+
+NewSequence("Circle")
+	SetAccel(50)
+	SetCruiseVel(15)
+
+	SetTurnRadius(60)
+	Turn(360, Forward, Stop)
+
+enableTracing( off )
+
+NewSequence("Oval")
+	SetTurnRadius(30)
+	Move(90, Go)
+	Turn(180, Forward, Go)
+	Move(180, Go)
+	Turn(180, Forward, Go)
+	Move(90, Stop)
+
+NewSequence("OutBack3Dots")
+	SetAccel(200)
+	SetCruiseVel(100)
+	Move(90, Stop)
+	Move(-90, Stop)
+
+NewSequence("Pause1")
+	MovePause( 1.0 )
+
+
+NewSequence("Slalom")
+	//BallIntakePivot( UP )
+	SetAccel(150)
+	SetCruiseVel(65)
+	SetTurnRadius(30)         	// radius of turns
+	
+	Move(  15, Go)
+	Turn( -50, Forward, Go) 	//  1: turn below D2
+	Move(  35, Go)       		//  2: move through D2/D4
+
+	Turn(  50, Forward, Go) 	//  2: turn above D4
+	Move( 100, Go)       		//  5: move D4 to D8
+	
+	Turn(  60, Forward, Go)		//  6: Turn above D8
+	Move(  13, Go)			//  7: move thrugh D8/D10
+	
+	Turn(-298, Forward, Go)		//  8: around D10
+	Move(  20, Go)			//  9: move through D10/D8
+	
+	Turn(  60, Forward, Go)		// 10: turn below D8
+	Move( 105, Go)			// 11: move D8 to D4
+	
+	Turn(  50, Forward, Go)		// 12: turn below D4
+	Move(  20, Go)			// 13: move through D4/D2
+	
+	Turn( -50, Forward, Go)		// 14: turn above D2
+	Move(  17, STOP)		// 15: Stop after finish
+
+NewSequence("Barrel")
+	SetAccel(125)
+	SetCruiseVel(75)
+
+	SetAccel( 100 )
+	SetCruiseVel( 60 )
+
+ 	SetTurnRadius( 30 ) // radius of turns
+
+ 	Move( 115, Go )  // move out to cone at D5
+ 	Turn( 355, Forward, Go ) // Go around D5
+
+ 	Move( 70, Go ) // move to cone at B5
+	Turn( -309, Forward, Go ) // Go around B5
+
+ 	Move( 55, Go ) // move to cone at D10
+ 	Turn( -228, Forward, Go ) // Go around D10
+
+ 	Move( 20, Go ) // Go back
+
+	SetAccel( 150 )
+	SetCruiseVel( 150 )
+ 	Move( 250, STOP ) // Go back
+
+	MovePause( 1.0 )
+	SetAccel( 100 )
+	SetCruiseVel( 50 )
+	Turn(-180, Forward, Stop)
+
+
+NewSequence("Bounce")
+
+	// moveEndVel( 20, 50 )
+
+	SetAccel( 125 )
+	SetCruiseVel( 50 )
+
+	SetTurnRadius(47)			// radius of turns
+	Move( 24, Go)             	// 1. move above A3
+	Turn( -90, Forward, Stop)  	// 2. move into A3
+
+	SetCruiseVel( 85 )
+	Turn(  20, Backward, Go)	// 3. move out of A3
+
+	Move(-35, Go) 			// 4. move to D5
+	//MoveEx( -65, 75, 75)
+
+	SetTurnRadius(30)		//radius of turns
+	Turn(160, Backward, Go)		// 5. turn around D5
+
+	Move(-53, Stop)			// 6. Move into A6
+	//MoveEx( -69, 75, 0)
+
+	Move( 39, Go)  			// 7. move to D7
+	//MoveEx( 53, 75, 75)
+
+	SetTurnRadius(55)		//radius of turns
+	Turn( -180, Forward, Go)	// 8. turn around D7
+
+	Move( 39, Stop)			// 9. Move into A9
+	//MoveEx( 56, 75, 0)		// Move into A9
+
+	SetCruiseVel( 50 )
+	SetTurnRadius( 55 )		// radius of turns
+	Turn( 30, Backward, Go)		// 10. turn into Finish
+	Move( 0, Go)			// 11. Move to Finish
+	SetTurnRadius(25)		// radius of turns
+	Turn( 60, Backward, Stop)	// 12. turn into Finish
+	
+	MovePause( 2.0 )
+	SetAccel( 150 )
+	SetCruiseVel( 75 )
+	Move(320, Stop)
+	Turn(-180, Forward, Stop)
+
+NewSequence("Search-AR")
+
+	SetAccel( 125 )
+	SetCruiseVel( 100 )
+
+	SetTurnRadius( 30 )		// radius of turns
+
+	StartCommand( "IntakeArmDown" )
+
+	// ball 1 C3
+	Move( 50, Stop )   			
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+
+	// ball 2 D5
+	Turn( -25, Forward, Go )
+	Move( 55, Stop)         
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+
+	// ball 3 A6
+	SetCruiseVel( 85 )
+	Turn( -117, Forward, Go )
+	Move( 45, Stop )        
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+
+	// to finish
+	SetCruiseVel( 125 )
+	Turn( 80, Backward, Go )
+	StartCommand( "IntakeArmUp" )
+	Move( -85, Stop )
+
+	// move back to start
+	MovePause( 2.0 )
+	SetCruiseVel( 75 )
+	Move( 220, Go )
+	Turn( 25, Forward, Stop)
+	Spin( 180 )
+
+enableTracing( off )
+
+NewSequence("Search-AB")
+
+	SetAccel( 125 )
+	SetCruiseVel( 100 )
+
+	SetTurnRadius( 30 )		// radius of turns
+
+	StartCommand( "IntakeArmDown" )
+	
+	// ball 1 E6
+	SetAccel( 125 )
+	SetCruiseVel( 100 )
+	SetTurnRadius( 30 )		// radius of turns
+
+	Turn( -12, Forward, Go )
+	Move( 120, Stop )   			
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+	//MovePause( 2.0 )
+
+	// ball 2 B7
+	SetAccel( 125 )
+	SetCruiseVel( 85 )
+	SetTurnRadius( 20 )
+
+	Turn( -108, Forward, Go )
+	Move( 46, Stop)         
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+	//MovePause( 2.0 )
+
+	// ball 3 C9
+	SetAccel( 125 )
+	SetCruiseVel( 100 )
+	SetTurnRadius( 20 )
+
+	Turn( 89, Forward, Stop )
+	Move( 48, Stop )        
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+	//MovePause( 2.0 )
+
+	// to finish
+	SetAccel( 120 )
+	SetCruiseVel( 100 )
+
+	Turn( -16, Forward, Go )
+	StartCommand( "IntakeArmUp" )
+	Move( 51, Stop )
+
+	// move back to start
+	MovePause( 2.0 )
+	SetCruiseVel( 75 )
+	Move( -220, Go )
+	Turn( 25, Backward, Stop)
+	Spin( 180 )
+
+enableTracing( Off )
+
+NewSequence("Search-BR")
+
+	SetAccel( 125 )
+	SetCruiseVel( 100 )
+
+	SetTurnRadius( 30 )		// radius of turns
+
+	StartCommand( "IntakeArmDown" )
+	MovePause( 0.75 )
+	
+	// ball 1 B3
+	SetAccel( 120 )
+	SetCruiseVel( 100 )
+	SetTurnRadius( 30 )		// radius of turns
+
+	Move( 29, Stop )   			
+	OverlapNextAction( -0.7 )
+	StartCommand( "BallPickup" )
+	//MovePause( 2.0 )
+
+	// ball 2 D5
+	SetAccel( 120 )
+	SetCruiseVel( 80 )
+	SetTurnRadius( 20 )
+
+	Turn( 42, Forward, Go )
+	Move( 50, Stop)         
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+	//MovePause( 2.0 )
+
+	// ball 3 B7
+	SetAccel( 120 )
+	SetCruiseVel( 80 )
+	SetTurnRadius( 20 )
+
+	Turn( -90, Forward, Go )
+	Move( 40, Stop )        
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+	//MovePause( 2.0 )
+
+	// to finish
+	SetAccel( 120 )
+	SetCruiseVel( 100 )
+
+	Turn( 45, Forward, Go )
+	StartCommand( "IntakeArmUp" )
+	Move( 80, Stop )
+
+	// move back to start
+	MovePause( 2.0 )
+	SetCruiseVel( 75 )
+	Move( -300, Go )
+
+enableTracing( off )
+	
+NewSequence("Search-BB")
+
+	SetAccel( 125 )
+	SetCruiseVel( 100 )
+
+	SetTurnRadius( 30 )		// radius of turns
+
+	StartCommand( "IntakeArmDown" )
+	
+	// ball 1 D6
+	SetAccel( 120 )
+	SetCruiseVel( 100 )
+
+	SetTurnRadius( 200 )		// radius of turns
+ 	JogMove( 146, -23, Stop )
+
+	//Turn( 30, Forward, Go )
+	//Move( 120, Stop )   			
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+	//MovePause( 2.0 )
+
+	// ball 2 B8
+	SetAccel( 120 )
+	SetCruiseVel( 90 )
+	SetTurnRadius( 45 )
+
+	Turn( -45, Forward, Go )
+	Move( 40, Stop)         
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+	//MovePause( 2.0 )
+
+	// ball 3 D10
+	SetAccel( 120 )
+	SetCruiseVel( 60 )
+	SetTurnRadius( 20 )
+
+	Turn( 85, Forward, Go )
+	Move( 40, Stop )        
+	OverlapNextAction( -1.0 )
+	StartCommand( "BallPickup" )
+	//MovePause( 2.0 )
+
+	// to finish
+	SetAccel( 120 )
+	SetCruiseVel( 70 )
+
+	StartCommand( "IntakeArmUp" )
+
+	SetAccel( 120 )
+	SetCruiseVel( 90 )
+	SetTurnRadius( 45 )
+
+	Turn( -50, Forward, Stop )
+
+	// move back to start
+	MovePause( 2.0 )
+	SetCruiseVel( 75 )
+
+	Move( -250, Go )
+	
+enableTracing( Off )
+	
+
+
+

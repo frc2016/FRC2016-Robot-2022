@@ -1,0 +1,51 @@
+{
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/BallIntake": "Subsystem",
+      "/LiveWindow/BallToss": "Subsystem",
+      "/LiveWindow/Climber": "Subsystem",
+      "/LiveWindow/DriveTrainSRX": "Subsystem",
+      "/LiveWindow/Gyro": "Subsystem",
+      "/LiveWindow/Limelight": "Subsystem",
+      "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
+      "/LiveWindow/Ungrouped/DigitalInput[0]": "Digital Input",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/SmartDashboard/Arcade": "Command",
+      "/SmartDashboard/Auto mode": "String Chooser",
+      "/SmartDashboard/Ball Pickup": "Command",
+      "/SmartDashboard/BrushIn": "Command",
+      "/SmartDashboard/BrushOut": "Command",
+      "/SmartDashboard/Climb Auto": "Command",
+      "/SmartDashboard/Climb In": "Command",
+      "/SmartDashboard/Climb LI": "Command",
+      "/SmartDashboard/Climb LI RO": "Command",
+      "/SmartDashboard/Climb LO": "Command",
+      "/SmartDashboard/Climb LO RI": "Command",
+      "/SmartDashboard/Climb Out": "Command",
+      "/SmartDashboard/Climb RI": "Command",
+      "/SmartDashboard/Climb RO": "Command",
+      "/SmartDashboard/Drive Fast": "Command",
+      "/SmartDashboard/Drive Slow": "Command",
+      "/SmartDashboard/DriveStraight": "Command",
+      "/SmartDashboard/Flop In": "Command",
+      "/SmartDashboard/Flop Out": "Command",
+      "/SmartDashboard/Grip_FindBalls": "Command",
+      "/SmartDashboard/IntakeArmDown": "Command",
+      "/SmartDashboard/IntakeArmStop": "Command",
+      "/SmartDashboard/IntakeArmUp": "Command",
+      "/SmartDashboard/Limelight_Playerstation": "Command",
+      "/SmartDashboard/Read Analog 0": "Command",
+      "/SmartDashboard/ToggleLEDs": "Command",
+      "/SmartDashboard/Toss Gate Dn/Out": "Command",
+      "/SmartDashboard/Toss Gate Up/In": "Command",
+      "/SmartDashboard/Toss Start": "Command",
+      "/SmartDashboard/Toss Stop": "Command"
+    }
+  },
+  "NetworkTables": {
+    "SmartDashboard": {
+      "open": true
+    }
+  }
+}
