@@ -13,9 +13,9 @@ package org.usfirst.frc2016;
 import org.usfirst.frc2016.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
+// import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc2016.POVTrigger;
+// import org.usfirst.frc2016.POVTrigger;
 
 /**
  * This class is the glue that binds the controls on the physical operator

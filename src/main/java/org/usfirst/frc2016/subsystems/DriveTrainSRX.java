@@ -305,8 +305,6 @@ public class DriveTrainSRX extends Subsystem {
 
         setDriveSpeed(max_vel, max_accel);
 
-        m_odometry.update(
-                m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
     }
 
     public void tankDriveVolts(double leftVolts, double rightVolts) {
@@ -976,14 +974,4 @@ public class DriveTrainSRX extends Subsystem {
     public Pose2d getPose() {
         return m_odometry.getPoseMeters();
     }
-
-    private final Encoder m_leftEncoder =
-      talonDriveLeft1.getEnc
-
-    // The right-side drive encoder
-    private final Encoder m_rightEncoder =
-        new Encoder(
-            DriveConstants.kRightEncoderPorts[0],
-            DriveConstants.kRightEncoderPorts[1],
-            DriveConstants.kRightEncoderReversed);
 }

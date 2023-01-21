@@ -30,6 +30,13 @@ public class BallToss extends Subsystem {
             motor.setUnits("fraction", motor.getCntsPerRev() * motor.getMaxRevsPerSec());
 
             motor.setUnitsNative();
+            boolean i = true;
+            while (i) {
+                if (readyToToss) {
+                    break;
+                }
+            }
+
         }
 
         void setMotorSpeed(double vel) {

@@ -13,31 +13,31 @@ package org.usfirst.frc2016;
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.vision.VisionThread;
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.cscore.CameraServerCvJNI;
-import edu.wpi.first.cscore.UsbCamera;
+// import edu.wpi.first.cameraserver.CameraServer;
+// import edu.wpi.first.cscore.CameraServerCvJNI;
+// import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.CommandGroup;
+// import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+// import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.Joystick;
+// import edu.wpi.first.wpilibj.Joystick;
 
 import org.usfirst.frc2016.commands.*;
 import org.usfirst.frc2016.subsystems.*;
-import org.opencv.core.Rect;
-import org.opencv.imgproc.Imgproc;
-import org.usfirst.frc2016.Config;
+// import org.opencv.core.Rect;
+// import org.opencv.imgproc.Imgproc;
+// import org.usfirst.frc2016.Config;
 import org.usfirst.frc2016.utils.MotorBase;
 
-import edu.wpi.first.vision.VisionThread;
+// import edu.wpi.first.vision.VisionThread;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -64,7 +64,6 @@ public class Robot extends TimedRobot {
     public static Boolean showDebugDashboard = true;
     public static Boolean isTelemetryEnbled = false;
     public static AutoPilotRobot autoPilotRobot;
-    public static PathPlanner pathPlanner;
     public static Timer gameTimer = new Timer();
     public static Boolean gameTimerArmed = false;
 

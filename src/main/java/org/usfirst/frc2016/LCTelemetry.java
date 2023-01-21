@@ -10,10 +10,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Preferences;
+// import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /****************************************************************************************************
  * General purpose tool to allow user to record and save robot variable data to
@@ -50,7 +50,6 @@ public class LCTelemetry {
     private int savedRows; // rows of data produced
     private Timer timerStart; // time from last rest
     private double timeLast; // time of last save
-    private DriverStation driverStation;
     private boolean timeStampFilename; // true to add date stamp to filename
     private String filename;
     /** Default: telemetry.<b>Note: xls is added to the end.</b> */
@@ -85,7 +84,6 @@ public class LCTelemetry {
         timerStart = new Timer();
         timerStart.start();
 
-        driverStation = DriverStation.getInstance();
         timeStampFilename = true;
         filePath = "/var/volatile/tmp"; /** /var/volatile/tmp folder. Lost after reboot, /home/lvuser is writable. */
         filename = "telemetry";
@@ -359,9 +357,9 @@ public class LCTelemetry {
         currentRowData[colIndex++] = dateFormat.format(Calendar.getInstance().getTime());
 
         // event data
-        currentRowData[colIndex++] = driverStation.getEventName();
+        currentRowData[colIndex++] = DriverStation.getEventName();
 
-        DriverStation.MatchType matchType = driverStation.getMatchType();
+        DriverStation.MatchType matchType = DriverStation.getMatchType();
         String s_matchType = "";
         if (matchType == DriverStation.MatchType.Elimination)
             s_matchType = "Elimination";
@@ -373,7 +371,7 @@ public class LCTelemetry {
             s_matchType = "Qualification";
         currentRowData[colIndex++] = s_matchType;
 
-        currentRowData[colIndex++] = Integer.toString(driverStation.getMatchNumber());
+        currentRowData[colIndex++] = Integer.toString(DriverStation.getMatchNumber());
 
         currentRowData[colIndex++] = String.format("%.2f", RobotController.getBatteryVoltage());
 
@@ -385,11 +383,11 @@ public class LCTelemetry {
 
         String s_Mode = "";
 
-        if (driverStation.isAutonomous() == true)
+        if (DriverStation.isAutonomous() == true)
             s_Mode = "auton"; // this form is allowed as Java ignores whitespace between things
-        else if (driverStation.isTeleop() == true)
+        else if (DriverStation.isTeleop() == true)
             s_Mode = "teleop"; // we don't like to do it as it may not be clear and harder to debug.
-        else if (driverStation.isDisabled() == true)
+        else if (DriverStation.isDisabled() == true)
             s_Mode = "disable"; // added here for your viewing pleasure and a learning moment
 
         currentRowData[colIndex++] = s_Mode; // add mode to the column data list
@@ -474,7 +472,7 @@ public class LCTelemetry {
      */
     public void outputToDashBoard(Boolean b_MinDisplay) {
 
-        if (driverStation.isDisabled()) { // only acted upon and displayed in disabled mode to save cycles
+        if (DriverStation.isDisabled()) { // only acted upon and displayed in disabled mode to save cycles
             // --SmartDashboard.putString("Tele_FileName", getFileName() );
         }
     }

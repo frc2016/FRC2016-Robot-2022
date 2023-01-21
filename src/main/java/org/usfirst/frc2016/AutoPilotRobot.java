@@ -1,6 +1,6 @@
 package org.usfirst.frc2016;
 
-import java.util.Objects;
+// import java.util.Objects;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Arrays;
@@ -12,12 +12,12 @@ import org.usfirst.frc2016.commands.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import edu.wpi.first.wpilibj.DriverStation;
+// import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AutoPilotRobot {
 	private AutoPilot autoPilot;
-	private String lastStatus;
+	// private String lastStatus;
 	private Timer driveUpdateTimer;
 	private int nDriveUpdateMs = 10;
 	private String moveFilePath = "/c/";

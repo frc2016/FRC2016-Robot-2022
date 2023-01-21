@@ -7,8 +7,8 @@
 //package edu.wpi.first.wpilibj.templates;
 package org.usfirst.frc2016;
 
-import edu.wpi.first.wpilibj.util.Color;
-import com.revrobotics.ColorMatch;
+// import edu.wpi.first.wpilibj.util.Color;
+// import com.revrobotics.ColorMatch;
 
 /**
  *

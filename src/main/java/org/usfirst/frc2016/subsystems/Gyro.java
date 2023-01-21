@@ -19,11 +19,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.kauailabs.navx.frc.AHRS;
-import com.kauailabs.navx.frc.AHRS.SerialDataType;
+// import com.kauailabs.navx.frc.AHRS.SerialDataType;
 //import com.sun.tools.javac.tree.JCTree.JCPolyExpression.PolyKind;
 
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.SerialPort;
+// import edu.wpi.first.wpilibj.SerialPort;
 
 /**
  *

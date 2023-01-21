@@ -24,8 +24,8 @@ import java.util.Map;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import edu.wpi.first.wpilibj.util.Color;
-import com.revrobotics.ColorMatch;
+// import edu.wpi.first.wpilibj.util.Color;
+// import com.revrobotics.ColorMatch;
 
 /************************
  * Class Constructor. You pass in the file name. Example: /c/MyConfigFile.cfg.
